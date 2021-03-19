@@ -7,6 +7,7 @@ function ModalContainer(props) {
     <div className='ModalContainer'>
       <Button variant="primary" onClick={props.handleShow}>
         Launch demo modal
+        {/*TODO*/}
       </Button>
 
       <Modal show={props.show} onHide={props.handleClose}>
