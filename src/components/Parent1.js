@@ -1,11 +1,11 @@
 import ModalContainer from './ModalContainer.js'
 import React from 'react';
+import './style/Parent.css'
 
-function Parent(props) {
-
-  // const message = "Let's drunk";
+function Parent1(props) {
   return (
-    <div>
+    <div className='Parent'>
+      <h1>{props.name}</h1>
       <ModalContainer 
         title={props.title1}
         message={props.message1}
@@ -31,4 +31,4 @@ function Parent(props) {
   );
 }
 
-export default Parent;
+export default Parent1;

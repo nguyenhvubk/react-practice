@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Parent from './components/Parent'
+import Parent1 from './components/Parent1'
+import Parent2 from './components/Parent2'
 import React from 'react';
 import { PARENT1_MODAL_CONTENTS, PARENT2_MODAL_CONTENTS } from './constants'
 
-export class App extends React.Component {
-
+class App extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -31,19 +32,19 @@ export class App extends React.Component {
       parent2: {
         modals: [
           {
-            isShow: false,
-            title: 'modal11',
-            message: 'message11'
+            isShow: PARENT2_MODAL_CONTENTS[0].isShow,
+            title: PARENT2_MODAL_CONTENTS[0].title,
+            message: PARENT2_MODAL_CONTENTS[0].message 
           },
           {
-            isShow: false,
-            title: 'modal12',
-            message: 'message12'
+            isShow: PARENT2_MODAL_CONTENTS[1].isShow,
+            title: PARENT2_MODAL_CONTENTS[1].title,
+            message: PARENT2_MODAL_CONTENTS[1].message
           },
           {
-            isShow: false,
-            title: 'modal13',
-            message: 'message13'
+            isShow: PARENT2_MODAL_CONTENTS[2].isShow,
+            title: PARENT2_MODAL_CONTENTS[2].title,
+            message: PARENT2_MODAL_CONTENTS[2].message
           }
         ],
       },
@@ -66,7 +67,7 @@ export class App extends React.Component {
       parent2: {
         ...prevState.parent2,
         modals: prevState.parent2.modals.map(
-          (ls, index) => index === key? {...ls, isShow: i}: ls
+          (ls, index) => index === key? {...ls, isShow: i}: ls  
         )
       }
     }))
@@ -79,7 +80,8 @@ export class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <div className="Parents-container">
-          <Parent 
+          <Parent1 
+            name='Parent 1'
             title1={this.state.parent1.modals[0].title}
             message1={this.state.parent1.modals[0].message}
             show1={this.state.parent1.modals[0].isShow}
@@ -98,18 +100,11 @@ export class App extends React.Component {
             handleShow3={() => this.handleShowParent1(true, 2)}
             handleClose3={() => this.handleShowParent1(false, 2)}
           />
-          <Parent 
-            show1={this.state.parent2.modals[0].isShow}
-            handleShow1={() => this.handleShowParent2(true, 0)}
-            handleClose1={() => this.handleShowParent2(false, 0)}
-
-            show2={this.state.parent2.modals[1].isShow}
-            handleShow2={() => this.handleShowParent2(true, 1)}
-            handleClose2={() => this.handleShowParent2(false, 1)}
-
-            show3={this.state.parent2.modals[2].isShow}
-            handleShow3={() => this.handleShowParent2(true, 2)}
-            handleClose3={() => this.handleShowParent2(false, 2)}
+          <Parent2
+            name='Parent 2'
+            modals={this.state.parent2.modals}
+            handleShow={this.handleShowParent2.bind(this)}
+            handleClose={this.handleShowParent2.bind(this)}
           />
         </div>
       </div>

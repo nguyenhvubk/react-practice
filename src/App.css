@@ -38,6 +38,8 @@
 }
 
 .Parents-container{
-  text-align: center;
-  /*TODO*/
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
